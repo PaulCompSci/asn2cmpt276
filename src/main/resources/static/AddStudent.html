@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add user</title>
+</head>
+<body>
+    <h1> Add student page</h1>
+    <form>
+    
+            <label for="name">Name :</label>
+            <input type="text" id="name" name="name"><br><br>
+
+            <label for="weight">Weight :</label>
+            <input type="text" id="weight" name="weight"><br> <br> 
+
+            <label for="height">Height :</label>    
+            <input type="text" id="height" name="height"><br><br>
+
+
+            <label for="hairColor">hair color : </label>
+            <input type="color" id="hairColor" name="hairColor"><br> <br> 
+
+            <label for= "gpa">GPA :</label><br>
+            <input type="range" id="gpa" name="gpa" min="0.00" max="4.33" step="0.01"  />
+            <label id = "currGPA">0.00</label>
+            <br> <br> 
+
+            
+            <label for="OS">Choose your favourite operating system : </label>
+            <select id="OS" name="OS">
+                <option value="Windows">Windows</option>
+                <option value="MacOS">MacOS</option>
+                <option value="Linux">Linux</option>
+                <option value="Ubuntu">Ubuntu</option>
+                <option value="ChromeOS">ChromsOS</option>
+                <option value="Other">Other</option>
+            </select>
+            <br> <br> 
+            
+            <button type="submit" onclick="this.form.reset();">Add Student</button>
+
+      </form>
+
+      <script src="./javascript/addStudent.js"></script>
+</body>
+</html>
