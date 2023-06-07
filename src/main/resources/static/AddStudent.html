@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1> Add student page</h1>
-    <form>
+    <form action="/student/add" method = "post">
     
             <label for="name">Name :</label>
             <input type="text" id="name" name="name"><br><br>
@@ -30,7 +30,7 @@
 
             
             <label for="OS">Choose your favourite operating system : </label>
-            <select id="OS" name="OS">
+            <select id="OS" name="favouriteOS">
                 <option value="Windows">Windows</option>
                 <option value="MacOS">MacOS</option>
                 <option value="Linux">Linux</option>
@@ -40,7 +40,7 @@
             </select>
             <br> <br> 
             
-            <button type="submit" onclick="this.form.reset();">Add Student</button>
+            <button type="submit" ;">Add Student</button>
 
       </form>
 
