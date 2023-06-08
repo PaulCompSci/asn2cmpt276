@@ -6,3 +6,5 @@
         value = get.value ; 
         document.getElementById("currGPA").textContent = value  ;
     });
+
+

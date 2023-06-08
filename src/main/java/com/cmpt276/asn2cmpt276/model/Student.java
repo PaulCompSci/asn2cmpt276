@@ -3,7 +3,7 @@ package com.cmpt276.asn2cmpt276.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="student")
+@Table(name="Student")
 public class Student { 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
