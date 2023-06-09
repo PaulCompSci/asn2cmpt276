@@ -4,7 +4,7 @@ h1{
     background-image: linear-gradient(
         -225deg,
         #ffffff 10%,
-        #705cf1 29%,    
+        #705cf1 29%,        
         #ff1361 67%,
         #fff800 100%
     );
@@ -107,3 +107,17 @@ body {
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
 }
+
+@media screen and (max-width: 768px) {
+    h1 {
+      font-size: 6vw;
+      margin-bottom: 5%;
+    }
+  
+    .button {
+      width: 10 0%;
+      height: 40%;
+     
+    }
+  }
+  

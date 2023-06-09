@@ -1,0 +1,76 @@
+body {
+    background-color: white;
+}
+
+.add-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(84, 107, 84);
+    color: white;
+    border-radius: 50%;
+    font-size: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#table {
+    border: 1px solid black;
+}
+
+/* static/css/databaseStyle.css */
+
+.bordered-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .bordered-table th,
+  .bordered-table td {
+    border: 1px solid black;
+    padding: 8px;
+  }
+  
+  .bordered-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .bordered-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .add-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #FF5722;
+    border-radius: 50%;
+    color: #FFF;
+    font-size: 36px;
+    text-align: center;
+    line-height: 60px;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+    background-color: #E64A19;
+}
+
+.add-button:active {
+    background-color: #BF360C;
+}
+
+@media (max-width: 768px) {
+    .add-button {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        line-height: 50px;
+    }
+}

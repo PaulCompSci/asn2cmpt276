@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  type="text/css"  th:href="@{/css/databaseStyle.css}">
+
+    <title>Data Visualization</title>
+</head>
+
+<body>
+    <h1>Student Database</h1>
+    <a href="/student/add" class="add-button">+</a>
+    
+    <table id = "table" class = "bordered-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Weight</th>
+                <th>Height</th>
+                <th>Hair Color</th>
+                <th>GPA</th>
+                <th>Favorite OS</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.getName()}"></td>
+                <td th:text="${student.getWeight()}"></td>
+                <td th:text="${student.getHeight()}"></td>
+                <td th:text="${student.getHairColor()}"></td>
+                <td th:text="${student.getGpa()}"></td>
+                <td th:text="${student.getFavOS()}"></td>
+                <td>
+                    <button onclick="editStudent('${student.getUid()}')">Edit</button>
+                    <button th:onclick="'javascript:deleteStudent(\'' + ${student.getUid()} + '\')'">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/student/add" class="add-button">+</a>
+
+    <script th:src="@{/javascript/databaseJS.js}"></script>
+</body>
+</html>
