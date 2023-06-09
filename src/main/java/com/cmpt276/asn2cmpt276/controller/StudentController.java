@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -33,6 +35,7 @@ public class StudentController {
     private StudentRepo studentRepo;
 
 
+    
 
 
 
@@ -64,6 +67,8 @@ public class StudentController {
     public String showStudentDatabase(Model model) {
 
         List<Student> students = studentRepo.findAll();
+        Collections.sort(students, Comparator.comparing(Student::getName));
+
         model.addAttribute("students", students);
         return "student/database"; // Thymeleaf template name without the extension
     }
@@ -79,6 +84,82 @@ public class StudentController {
     public String navigateToStaticPage() {
         return "redirect:/add.html";
     }
+
+    @GetMapping("/student/edit/{id}")
+    public String showEditPage(@PathVariable("id") Integer id, Model model) {
+        // Retrieve the student from the database using the provided ID
+        Optional<Student> optionalStudent = studentRepo.findById(id);
+    
+        // Check if the student exists
+        if (optionalStudent.isPresent()) {
+            Student student = optionalStudent.get();
+    
+            // Add the student object to the model
+            model.addAttribute("student", student);
+    
+            // Return the edit page template name
+            return "student/edit";
+        } else {
+            // Handle the case when the student is not found
+            return "error"; // You can create an error.html template to display an error message
+        }
+    }
+
+    @PostMapping("/student/update/{id}")
+public String updateStudent(@PathVariable("id") int id, @RequestParam Map<String, String> updatedStudent, HttpServletResponse response) {
+    Optional<Student> optionalStudent = studentRepo.findById(id);
+
+    if (optionalStudent.isPresent()) {
+        Student student = optionalStudent.get();
+
+        // Update the student's data using the updatedStudent map
+        String newName = updatedStudent.get("name");
+        if (newName != null) {
+            student.setName(newName);
+        }
+
+        Double newWeight = Double.parseDouble(updatedStudent.get("weight"));
+        if (newWeight != null) {
+            student.setWeight(newWeight);
+        }
+
+        Double newHeight = Double.parseDouble(updatedStudent.get("height"));
+        if (newHeight != null) {
+            student.setHeight(newHeight);
+        }
+
+        String newHairColor = updatedStudent.get("hairColor");
+        if (newHairColor != null) {
+            student.setHairColor(newHairColor);
+        }
+
+        Double newGpa = Double.parseDouble(updatedStudent.get("gpa"));
+        if (newGpa != null) {
+            student.setGpa(newGpa);
+        }
+
+        String newOS = updatedStudent.get("favouriteOS");
+        if (newOS != null) {
+            student.setFavOS(newOS);
+        }
+
+        
+        // Save the updated student object
+        studentRepo.save(student);
+
+        // Redirect to the student database page after updating
+        return "redirect:/student/database";
+    } else {
+        // Handle the case when the student is not found
+        return "error";
+    }
+}
+    
+
+    
+
+
+    
 
 }
 

@@ -24,5 +24,10 @@ function deleteStudent(id) {
     }
 }
 
+function editStudent(uid) {
+    // Construct the URL for the edit.html page with the UID parameter
+    var editUrl = "/student/edit/" + uid;
 
-
+    // Redirect to the editUrl within the same folder
+    window.location.href = editUrl;
+}

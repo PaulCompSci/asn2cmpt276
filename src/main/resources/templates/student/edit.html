@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update User</title>
+</head>
+<body>
+    <h1>Update Student Page</h1>
+    <form method="POST" th:action="@{/student/update/{id}(id=${student.uid})}">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required placeholder="Enter your name" th:value="${student.name}"><br><br>
+
+        <label for="weight">Weight:</label>
+        <input type="number" id="weight" name="weight" placeholder="KG" step="0.01" min="0.00" value="0.00" required th:value="${student.weight}"><br><br>
+
+        <label for="height">Height:</label>
+        <input type="number" id="height" name="height" placeholder="CM" step="0.01" min="0.00" value="0.00" required th:value="${student.height}"><br><br>
+
+        <label for="hairColor">Hair Color:</label>
+        <input type="color" id="hairColor" name="hairColor" th:value="${student.hairColor}"><br><br>
+
+        <label for="gpa">GPA:</label><br>
+        <input type="range" id="gpa" name="gpa" min="0.00" max="4.33" step="0.01" required th:value="${student.gpa}" />
+
+        <label id="currGPA" th:text="${student.gpa}"></label><br><br>
+
+
+        <label for="OS">Choose your favorite operating system:</label>
+        <select id="OS" name="favouriteOS">
+            <option value="Windows" th:selected="${student.favOS == 'Windows'}">Windows</option>
+            <option value="MacOS" th:selected="${student.favOS == 'MacOS'}">MacOS</option>
+            <option value="Linux" th:selected="${student.favOS == 'Linux'}">Linux</option>
+            <option value="Ubuntu" th:selected="${student.favOS == 'Ubuntu'}">Ubuntu</option>
+            <option value="ChromeOS" th:selected="${student.favOS == 'ChromeOS'}">ChromeOS</option>
+            <option value="Other" th:selected="${student.favOS == 'Other'}">Other</option>
+        </select><br><br>
+
+        <button type="submit" id = "saveButton">Save</button>
+    </form>
+    <script>
+        // Retrieve the UID parameter from the URL
+        var urlParams = new URLSearchParams(window.location.search);
+        var uid = urlParams.get('uid');
+    
+        // Fetch the user data using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/student/' + uid, true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var student = JSON.parse(xhr.responseText);
+                populateForm(student);
+            }
+        };
+        xhr.send();
+    
+        // Populate the form fields with the retrieved data
+        function populateForm(student) {
+            document.getElementById('name').value = student.name;
+            document.getElementById('weight').value = student.weight;
+            document.getElementById('height').value = student.height;
+            document.getElementById('hairColor').value = student.hairColor;
+            document.getElementById('gpa').value = student.gpa;
+            document.getElementById('currGPA').textContent = student.gpa;
+            document.getElementById('OS').value = student.favOS;
+        }
+
+        // Add an event listener to the Save button
+    var saveButton = document.getElementById('saveButton');
+    saveButton.addEventListener('click', function(event) {
+        // Show a confirmation dialog
+        var confirmed = confirm('Are you sure you want to save the changes?');
+        
+        // Check if the user confirmed the action
+        if (!confirmed) {
+            event.preventDefault(); // Cancel the form submission
+        }
+    });
+    </script>
+    
+
+    <script th:src="@{/javascript/edit.js}"></script>
+</body>
+</html>

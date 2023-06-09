@@ -35,14 +35,16 @@
                 <td th:text="${student.getGpa()}"></td>
                 <td th:text="${student.getFavOS()}"></td>
                 <td>
-                    <button onclick="editStudent('${student.getUid()}')">Edit</button>
+                    <button class="edit-button" th:onclick="'javascript:editStudent(' + ${student.uid} + ')'">Edit</button>
+
+
                     <button th:onclick="'javascript:deleteStudent(\'' + ${student.getUid()} + '\')'">Delete</button>
                 </td>
             </tr>
         </tbody>
     </table>
 
-    
+   
 
     <script th:src="@{/javascript/databaseJS.js}"></script>
 </body>
