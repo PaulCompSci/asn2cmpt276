@@ -36,19 +36,20 @@ public class StudentController {
 
 
 
-//     // @PostMapping ("/student/add")  // adding student to db
-//     // public String  addStudent(@RequestParam Map<String, String> newStudent, HttpServletResponse response){ 
+    @PostMapping ("/student/add")  // adding student to db
+    public String  addStudent(@RequestParam Map<String, String> newStudent, HttpServletResponse response){ 
 
-//     //     String newName  = newStudent.get("name") ; 
-//     //     Double newWeight = Double.parseDouble(newStudent.get("weight") ) ; 
-//     //     Double newHeight = Double.parseDouble(newStudent.get("height") ) ; 
-//     //     String newHairColor = newStudent.get("hairColor") ;
-//     //     Double newGpa = Double.parseDouble(newStudent.get("gpa") ) ;
-//     //     String newOS = newStudent.get("favouriteOS");
-//     //     Student savedStudent = studentRepo.save(new Student(newName, newWeight, newHeight, newHairColor, newGpa, newOS));
-//     //     response.setStatus(201) ; 
+        String newName  = newStudent.get("name") ; 
+        Double newWeight = Double.parseDouble(newStudent.get("weight") ) ; 
+        Double newHeight = Double.parseDouble(newStudent.get("height") ) ; 
+        String newHairColor = newStudent.get("hairColor") ;
+        Double newGpa = Double.parseDouble(newStudent.get("gpa") ) ;
+        String newOS = newStudent.get("favouriteOS");
+        Student savedStudent = studentRepo.save(new Student(newName, newWeight, newHeight, newHairColor, newGpa, newOS));
+        response.setStatus(201) ; 
         
-//     //     return "student/add";
+        return "redirect:/student/database";
+    }
         
         
 //     // }
@@ -72,6 +73,11 @@ public class StudentController {
 
         studentRepo.deleteById(id);
         return "redirect:/student/database";
+    }
+
+    @GetMapping("/navigate")
+    public String navigateToStaticPage() {
+        return "redirect:/add.html";
     }
 
 }

@@ -23,3 +23,6 @@ function deleteStudent(id) {
         window.location.href = "/student/delete/" + id;
     }
 }
+
+
+
