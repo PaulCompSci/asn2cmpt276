@@ -60,6 +60,10 @@ public class StudentController {
     @GetMapping("/student/visualization")
     public String showDataVisualization(Model model) {
         // Add any necessary logic to retrieve student data or perform other operations
+        List<Student> students = studentRepo.findAll();
+        Collections.sort(students, Comparator.comparing(Student::getName));
+
+        model.addAttribute("students", students);
         return "student/visualization"; // Thymeleaf template name without the extension
     }
 

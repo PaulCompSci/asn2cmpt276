@@ -31,3 +31,7 @@ function editStudent(uid) {
     // Redirect to the editUrl within the same folder
     window.location.href = editUrl;
 }
+
+function visualize() {
+    window.location.href = "/student/visualization";
+  }

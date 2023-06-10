@@ -13,38 +13,39 @@
     <h1>Student Database</h1>
     <a th:href="@{/navigate}" class="add-button">+</a>
     </a>
-    
-    <table id = "table" class = "bordered-table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Weight</th>
-                <th>Height</th>
-                <th>Hair Color</th>
-                <th>GPA</th>
-                <th>Favorite OS</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="student : ${students}">
-                <td th:text="${student.getName()}"></td>
-                <td th:text="${student.getWeight()}"></td>
-                <td th:text="${student.getHeight()}"></td>
-                <td th:text="${student.getHairColor()}"></td>
-                <td th:text="${student.getGpa()}"></td>
-                <td th:text="${student.getFavOS()}"></td>
-                <td>
-                    <button class="edit-button" th:onclick="'javascript:editStudent(' + ${student.uid} + ')'">Edit</button>
+    <div class="table-container">
+        <table id = "table" class = "bordered-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Weight</th>
+                    <th>Height</th>
+                    <th>Hair Color(in Hex)</th>
+                    <th>GPA</th>
+                    <th>Favorite OS</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="student : ${students}">
+                    <td th:text="${student.getName()}"></td>
+                    <td th:text="${student.getWeight()}"></td>
+                    <td th:text="${student.getHeight()}"></td>
+                    <td th:text="${student.getHairColor()}"></td>
+                    <td th:text="${student.getGpa()}"></td>
+                    <td th:text="${student.getFavOS()}"></td>
+                    <td>
+                        <button class="edit-button" th:onclick="'javascript:editStudent(' + ${student.uid} + ')'">Edit</button>
 
 
-                    <button th:onclick="'javascript:deleteStudent(\'' + ${student.getUid()} + '\')'">Delete</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                        <button class= "delete-button" th:onclick="'javascript:deleteStudent(\'' + ${student.getUid()} + '\')'">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</div>
 
-   
+    <button id = "visualize-button" onclick="visualize()">Visualize</button>
 
     <script th:src="@{/javascript/databaseJS.js}"></script>
 </body>

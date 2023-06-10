@@ -1,76 +1,80 @@
+/* Global Styles */
 body {
-    background-color: white;
+  background-color: black;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
+h1 {
+  text-align: center;
+}
+
+/* Table Styles */
+.table-container {
+  width: 90%;
+  max-height: 80%;
+  overflow: auto;
+  margin: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1a1a1a; /* Dark gray */
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: #333; /* Dark gray */
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #333; /* Dark gray */
+}
+
+/* Button Styles */
+.add-button,
+.edit-button,
+.delete-button,
+#visualize-button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
 .add-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background-color: rgb(84, 107, 84);
-    color: white;
-    border-radius: 50%;
-    font-size: 30px;
-    text-align: center;
-    cursor: pointer;
+  border-radius: 50px; /* Rounded shape */
+}
+td:nth-child(4) {
+  width: 20% /* Adjust the width as per your requirement */
 }
 
-#table {
-    border: 1px solid black;
+.add-button:hover,
+.edit-button:hover,
+.delete-button:hover,
+#visualize-button:hover {
+  background-color: #45a049; /* Darker green */
 }
 
-/* static/css/databaseStyle.css */
-
-.bordered-table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  .bordered-table th,
-  .bordered-table td {
-    border: 1px solid black;
-    padding: 8px;
-  }
-  
-  .bordered-table th {
-    background-color: #f2f2f2;
-  }
-  
-  .bordered-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  .add-button {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    background-color: #FF5722;
-    border-radius: 50%;
-    color: #FFF;
-    font-size: 36px;
-    text-align: center;
-    line-height: 60px;
-    text-decoration: none;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease;
-}
-
-.add-button:hover {
-    background-color: #E64A19;
-}
-
-.add-button:active {
-    background-color: #BF360C;
-}
-
-@media (max-width: 768px) {
-    .add-button {
-        width: 50px;
-        height: 50px;
-        font-size: 24px;
-        line-height: 50px;
-    }
+.add-button:active,
+.edit-button:active,
+.delete-button:active,
+#visualize-button:active {
+  background-color: #3e8e41; /* Active state green */
 }

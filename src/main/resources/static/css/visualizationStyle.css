@@ -1,0 +1,68 @@
+/* Global Styles */
+body {
+  background-color: black;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#boxContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.square-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  padding: 10px;
+}
+
+.square-box > div {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.gpa-text {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+button:hover {
+  background-color: #45a049; /* Darker green */
+}
+
+button:active {
+  background-color: #3e8e41; /* Active state green */
+}

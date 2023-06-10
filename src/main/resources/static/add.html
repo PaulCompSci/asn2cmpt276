@@ -4,46 +4,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/addStyle.css">
     <title>add user</title>
 </head>
 <body>
-    <h1> Add student page</h1>
-    <form action="/student/add" method = "post" id = "addStudentForm">
-    
-            <label for="name">Name :</label>
-            <input type="text" id="name" name="name" required placeholder="Enter your name" ><br><br>
 
-            <label for="weight">Weight :</label>
-            <input type="number" id="weight" name="weight" placeholder = "KG" step=0.01 min = "0.00" value = "0.00"required ><br> <br> 
+    <div class ="addUser" >
+        <h2>Add Student</h2>
+        <form action="/student/add" method = "post" id = "addStudentForm">
+                <div class ="userBox">
+                    
+                    <input type="text" id="name" name="name" required  ><br><br>
+                    <label for="name">Name :</label>
+                </div>
 
-            <label for="height">Height :</label>    
-            <input type="number" id="height" name="height" placeholder = "CM" step=0.01 min = "0.00" value = "0.00" required><br><br>
+                <div class ="userBox">
+               
+                <input type="number" id="weight" name="weight" step=0.01 min = "0.00" required ><br> <br> 
+                <label for="weight">Weight :</label>
+                </div>
 
+                <div class ="userBox">   
+                    <input type="number" id="height" name="height"  step=0.01 min = "0.00"  required><br><br>
+                    <label for="height">Height :</label>
+                </div>
+                
 
-            <label for="hairColor">hair color : </label>
-            <input type="color" id="hairColor" name="hairColor"><br> <br> 
+                <div class ="hairColor">
+                    <label for="hairColor">hair color : </label>
+                    <input type="color" id="color" name="hairColor"><br> <br> 
+                 </div>
 
-            <label for= "gpa">GPA :</label><br>
-            <input type="range" id="gpa" name="gpa" min="0.00" max="4.33" step="0.01"  required />
-            <label id = "currGPA">0.00</label>
-            <br><br> 
+                 <div class ="gpaInput">
+                    <label for= "gpa">GPA :</label><br>
+                    <input type="range" id="gpa" name="gpa" min="0.00" max="4.33" step="0.01"  required />
+                    <label id = "currGPA">0.00</label>
+                </div>
+                <br><br> 
 
-            
-            <label for="OS">Choose your favourite operating system : </label>
-            <select id="OS" name="favouriteOS">
-                <option value="Windows">Windows</option>
-                <option value="MacOS">MacOS</option>
-                <option value="Linux">Linux</option>
-                <option value="Ubuntu">Ubuntu</option>
-                <option value="ChromeOS">ChromsOS</option>
-                <option value="Other">Other</option>
-            </select>
-            <br> <br> 
-            
-            <button type="submit" >Add Student</button>
+                <div class = "dropBox">
+                    <label for="OS">Choose your favourite operating system : </label>
+                    <select id="OS" name="favouriteOS">
+                        <option value="Windows">Windows</option>
+                        <option value="MacOS">MacOS</option>
+                        <option value="Linux">Linux</option>
+                        <option value="Ubuntu">Ubuntu</option>
+                        <option value="ChromeOS">ChromsOS</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <br> <br> 
+                
+                <button type="submit" >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Add student
+                </button>
 
-      </form>
-
+        </form>
+    </div>
       
 
       <script src="./javascript/addStudent.js"></script>

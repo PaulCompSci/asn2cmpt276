@@ -4,9 +4,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  type="text/css"  th:href="@{/css/visualizationStyle.css}">
     <title>visualization</title>
+   
 </head>
 <body>
-<h1> visualization webpage </h1>
+    <h1>User Visualization</h1>
+    <div id="boxContainer"  >
+        <div th:each="user : ${students}" class="square-box" th:style="'width: ' + ${user.weight} + 'px; height: ' + ${user.height} + 'px;'">
+            <div th:text="${user.name}" th:style="'color: ' + ${user.hairColor}"></div>
+            <div><br></div>
+            <div class="gpa-text" th:text="${user.gpa}" ></div>
+        </div>
+    </div>
+
+    <button onclick="goToDatabase()">Go to database</button>
+
+    <script>
+        function goToDatabase() {
+    window.location.href = "/student/database";
+  }
+        // Fetch data from the server
+        function fetchData() {
+            fetch('/api/users') // Replace '/api/users' with the appropriate endpoint to fetch the user data
+                .then(response => response.json())
+                .then(data => {
+                    // Pass the user data to Thymeleaf
+                    const users = data;
+                    populateThymeleafModel(users);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        // Populate the Thymeleaf model with the user data
+        function populateThymeleafModel(users) {
+            const modelElement = document.getElementById('boxContainer');
+            modelElement.setAttribute('th:with', `users=${JSON.stringify(users)}`);
+        }
+
+        // Call the fetchData function when the page loads
+        window.addEventListener('load', fetchData);
+    </script>
 </body>
+
 </html>
