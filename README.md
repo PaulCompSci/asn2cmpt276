@@ -1,4 +1,4 @@
-#SFU Student Database System 
+# SFU Student Database System 
 Feature : 
 1) adding student 
 2) removing student
