@@ -19,6 +19,7 @@
     </div>
 
     <button onclick="goToDatabase()">Go to database</button>
+    <button id="menu-button" onclick="goToMenu()">To Menu</button>
 
     <script>
         function goToDatabase() {
@@ -42,6 +43,9 @@
         function populateThymeleafModel(users) {
             const modelElement = document.getElementById('boxContainer');
             modelElement.setAttribute('th:with', `users=${JSON.stringify(users)}`);
+        }
+        function goToMenu() {
+            window.location.href = "/menu.html"; // Replace "menu.html" with the filename of your menu page
         }
 
         // Call the fetchData function when the page loads

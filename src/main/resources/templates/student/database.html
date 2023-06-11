@@ -36,16 +36,16 @@
                     <td th:text="${student.getFavOS()}"></td>
                     <td>
                         <button class="edit-button" th:onclick="'javascript:editStudent(' + ${student.uid} + ')'">Edit</button>
-
-
                         <button class= "delete-button" th:onclick="'javascript:deleteStudent(\'' + ${student.getUid()} + '\')'">Delete</button>
                     </td>
                 </tr>
             </tbody>
         </table>
 </div>
-
-    <button id = "visualize-button" onclick="visualize()">Visualize</button>
+    <div id = "button-container"> 
+        <button id="menu-button" onclick="goToMenu()">To Menu</button>
+        <button id = "visualize-button" onclick="visualize()">Visualize</button>
+    </div>
 
     <script th:src="@{/javascript/databaseJS.js}"></script>
 </body>

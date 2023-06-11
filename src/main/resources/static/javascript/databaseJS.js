@@ -35,3 +35,7 @@ function editStudent(uid) {
 function visualize() {
     window.location.href = "/student/visualization";
   }
+
+  function goToMenu() {
+    window.location.href = "/menu.html"; // Replace "menu.html" with the filename of your menu page
+}
