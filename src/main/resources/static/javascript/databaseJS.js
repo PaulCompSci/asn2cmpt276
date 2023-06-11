@@ -37,5 +37,5 @@ function visualize() {
   }
 
   function goToMenu() {
-    window.location.href = "/menu.html"; // Replace "menu.html" with the filename of your menu page
+    window.location.href = "/Menu.html"; // Replace "menu.html" with the filename of your menu page
 }
