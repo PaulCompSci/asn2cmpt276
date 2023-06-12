@@ -2,20 +2,20 @@
 console.log("javascript file connected")
 
 function deleteStudent(uid) {
-    // Make an AJAX request to delete the student
+   
     $.ajax({
         url: "/students/" + uid,
         method: "DELETE",
         success: function () {
-            // Refresh the page after successful deletion
+            
             location.reload();
         }
     });
 }
 
-// Function to handle editing a student
+
 function editStudent(uid) {
-    // Redirect to the edit student page
+    
     window.location.href = "/students/" + uid + "/edit";
 }
 function deleteStudent(id) {
@@ -25,10 +25,10 @@ function deleteStudent(id) {
 }
 
 function editStudent(uid) {
-    // Construct the URL for the edit.html page with the UID parameter
+    
     var editUrl = "/student/edit/" + uid;
 
-    // Redirect to the editUrl within the same folder
+    
     window.location.href = editUrl;
 }
 
@@ -37,5 +37,5 @@ function visualize() {
   }
 
   function goToMenu() {
-    window.location.href = "/Menu.html"; // Replace "menu.html" with the filename of your menu page
+    window.location.href = "/Menu.html"; 
 }

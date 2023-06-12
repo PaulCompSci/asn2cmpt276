@@ -30,7 +30,7 @@
   }
         // Fetch data from the server
         function fetchData() {
-            fetch('/api/users') // Replace '/api/users' with the appropriate endpoint to fetch the user data
+            fetch('/api/users') 
                 .then(response => response.json())
                 .then(data => {
                     // Pass the user data to Thymeleaf

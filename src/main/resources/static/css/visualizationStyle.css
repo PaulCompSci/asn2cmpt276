@@ -55,7 +55,7 @@ h1 {
 }
 
 button {
-  background-color: #4CAF50; /* Green */
+  background-color: #4CAF50; 
   border: none;
   color: white;
   padding: 10px 20px;
@@ -69,9 +69,9 @@ button {
 }
 
 button:hover {
-  background-color: #45a049; /* Darker green */
+  background-color: #45a049; 
 }
 
 button:active {
-  background-color: #3e8e41; /* Active state green */
+  background-color: #3e8e41; 
 }
