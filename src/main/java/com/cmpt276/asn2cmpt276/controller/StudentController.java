@@ -32,11 +32,7 @@ public class StudentController {
     @Autowired
     private StudentRepo studentRepo;
 
-
-    
-
-
-
+    //mapping to the "add student" form
     @PostMapping ("/student/add")  // adding student to db
     public String  addStudent(@RequestParam Map<String, String> newStudent, HttpServletResponse response){ 
 
@@ -52,19 +48,20 @@ public class StudentController {
         return "redirect:/student/database";
     }
         
-        
-//     // }
 
+    // mapping to the visualization page 
     @GetMapping("/student/visualization")
     public String showDataVisualization(Model model) {
-        // Add any necessary logic to retrieve student data or perform other operations
+
         List<Student> students = studentRepo.findAll();
         Collections.sort(students, Comparator.comparing(Student::getName));
 
         model.addAttribute("students", students);
-        return "student/visualization"; // Thymeleaf template name without the extension
+        return "student/visualization"; 
     }
 
+
+    //mapping to the database 
     @GetMapping("/student/database")
     public String showStudentDatabase(Model model) {
 
@@ -72,9 +69,11 @@ public class StudentController {
         Collections.sort(students, Comparator.comparing(Student::getName));
 
         model.addAttribute("students", students);
-        return "student/database"; // Thymeleaf template name without the extension
+        return "student/database"; 
     }
 
+
+    //mapping to delete user from database
     @GetMapping("/student/delete/{id}")
     public String deleteStudent(@PathVariable("id") int id) {
 
@@ -82,11 +81,14 @@ public class StudentController {
         return "redirect:/student/database";
     }
 
+    
     @GetMapping("/navigate")
     public String navigateToStaticPage() {
         return "redirect:/add.html";
     }
 
+
+    //mapping to edit student attributes 
     @GetMapping("/student/edit/{id}")
     public String showEditPage(@PathVariable("id") Integer id, Model model) {
         // Retrieve the student from the database using the provided ID
@@ -103,59 +105,59 @@ public class StudentController {
             return "student/edit";
         } else {
             // Handle the case when the student is not found
-            return "error"; // You can create an error.html template to display an error message
+            return "error"; 
         }
     }
 
     @PostMapping("/student/update/{id}")
-public String updateStudent(@PathVariable("id") int id, @RequestParam Map<String, String> updatedStudent, HttpServletResponse response) {
-    Optional<Student> optionalStudent = studentRepo.findById(id);
+    public String updateStudent(@PathVariable("id") int id, @RequestParam Map<String, String> updatedStudent, HttpServletResponse response) {
+        Optional<Student> optionalStudent = studentRepo.findById(id);
 
-    if (optionalStudent.isPresent()) {
-        Student student = optionalStudent.get();
+        if (optionalStudent.isPresent()) {
+            Student student = optionalStudent.get();
 
-        // Update the student's data using the updatedStudent map
-        String newName = updatedStudent.get("name");
-        if (newName != null) {
-            student.setName(newName);
+            // Update the student's data using the updatedStudent map
+            String newName = updatedStudent.get("name");
+            if (newName != null) {
+                student.setName(newName);
+            }
+
+            Double newWeight = Double.parseDouble(updatedStudent.get("weight"));
+            if (newWeight != null) {
+                student.setWeight(newWeight);
+            }
+
+            Double newHeight = Double.parseDouble(updatedStudent.get("height"));
+            if (newHeight != null) {
+                student.setHeight(newHeight);
+            }
+
+            String newHairColor = updatedStudent.get("hairColor");
+            if (newHairColor != null) {
+                student.setHairColor(newHairColor);
+            }
+
+            Double newGpa = Double.parseDouble(updatedStudent.get("gpa"));
+            if (newGpa != null) {
+                student.setGpa(newGpa);
+            }
+
+            String newOS = updatedStudent.get("favouriteOS");
+            if (newOS != null) {
+                student.setFavOS(newOS);
+            }
+            
+            // Save the updated student object
+            studentRepo.save(student);
+
+            // Redirect to the student database page after updating
+            return "redirect:/student/database";
+        } 
+        else {
+            // Handle the case when the student is not found
+            return "error";
         }
-
-        Double newWeight = Double.parseDouble(updatedStudent.get("weight"));
-        if (newWeight != null) {
-            student.setWeight(newWeight);
-        }
-
-        Double newHeight = Double.parseDouble(updatedStudent.get("height"));
-        if (newHeight != null) {
-            student.setHeight(newHeight);
-        }
-
-        String newHairColor = updatedStudent.get("hairColor");
-        if (newHairColor != null) {
-            student.setHairColor(newHairColor);
-        }
-
-        Double newGpa = Double.parseDouble(updatedStudent.get("gpa"));
-        if (newGpa != null) {
-            student.setGpa(newGpa);
-        }
-
-        String newOS = updatedStudent.get("favouriteOS");
-        if (newOS != null) {
-            student.setFavOS(newOS);
-        }
-
-        
-        // Save the updated student object
-        studentRepo.save(student);
-
-        // Redirect to the student database page after updating
-        return "redirect:/student/database";
-    } else {
-        // Handle the case when the student is not found
-        return "error";
     }
-}
     
 
     
